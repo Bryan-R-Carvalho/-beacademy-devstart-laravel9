@@ -2,6 +2,7 @@
 @section('title', 'Listagem de usuarios')
 @section('body')
     <h1>Listagem de usuarios</h1>
+    <a href="{{ route('users.create')}}" class="btn btn-success">Criar usuario</a>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -24,6 +25,7 @@
                     
             </tr>
             @endforeach
+           
         </tbody>
     </table>
 @endsection

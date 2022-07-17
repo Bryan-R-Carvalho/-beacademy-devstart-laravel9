@@ -1,9 +1,9 @@
 @extends('template.users')
-@section('title', 'Usuario ' .$user->name)
+@section('title', 'Usuário '.$user->name)
 @section('body')
-    <h1>Usuario {{$user->name}}</h1>
+    <h1>Usuario {{ $user->name }}</h1>
     <table class="table table-striped">
-        <thead>
+        <thead class="text-center">
             <tr>
                 <th>ID</th>
                 <th>Nome</th>
@@ -25,6 +25,6 @@
             </tr>
         </tbody>
     </table>
-    <a href="{{route('users.index')}} " class="btn btn-default">Voltar para lista</a>
+    <a href="{{route('users.index')}} " class="btn btn-primary">Voltar para lista</a>
     </div>
 @endsection
