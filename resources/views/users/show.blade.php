@@ -1,16 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Usuario {{ $user->name }}</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
-</head>
-<body>
-<div class="container">
-    <h1>Listagem de usuarios</h1>
+@extends('template.users')
+@section('title', 'Usuario ' .$user->name)
+@section('body')
+    <h1>Usuario {{$user->name}}</h1>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -36,5 +27,4 @@
     </table>
     <a href="{{route('users.index')}} " class="btn btn-default">Voltar para lista</a>
     </div>
-</body>
-</html>
+@endsection
