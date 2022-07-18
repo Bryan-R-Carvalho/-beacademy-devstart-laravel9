@@ -9,7 +9,8 @@
                 <th>Nome</th>
                 <th>Email</th>
                 <th>Data Cadastro</th>
-                <th>Ações</th>
+                <th>Editar</th>
+                <th>Deletar</th>
             </tr>
         </thead>
         <tbody class="text-center">
@@ -20,8 +21,14 @@
                 <td>{{ date('d/m/Y', strtotime($user->created_at)) }}</td>
                 <td>
                     <a href="{{route('users.edit', $user->id)}} " class="btn btn-warning">Editar</a>
-                    <a href="" class="btn btn-danger">Deletar</a>
-                    
+                </td>
+                <td>
+                <form action="{{route('users.destroy', $user->id)}}" method="POST">
+                        @method('DELETE')
+                        @csrf
+                        <button type="submit" class="btn btn-danger">Deletar</button>
+                    </form>
+                </td>
             </tr>
         </tbody>
     </table>
