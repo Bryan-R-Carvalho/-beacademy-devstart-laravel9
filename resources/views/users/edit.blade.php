@@ -1,7 +1,15 @@
 @extends('template.users')
 @section('title', "Usuario " .$user->name)
 @section('body')
-<h1>Usuario {{$user->name}}</h1>
+    <h1>Usuario {{$user->name}}</h1>
+    @if($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+            @foreach($errors->all() as $error)
+                {{ $error }}<br>
+            @endforeach
+        </div>  
+    @endif
     <form action="{{route('users.update', $user->id)}}" method="POST">
         @method('PUT')
         @csrf
