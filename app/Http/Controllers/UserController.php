@@ -44,6 +44,10 @@ class UserController extends Controller
 
         $data = $request->all();
         $data['password'] = bcrypt($data['password']);
+        $file = $request['image'];
+        $path = $file->store('profile', 'public');
+        $data['image'] = $path;
+
         $this->model->create($data);
 
         return redirect()->route('users.index');

@@ -26,6 +26,10 @@
             <input type="password" name="password" id="password" class="form-control">
         </div>
         <div class="mb-3">
+            <label for="image" class="form-label">Imagem</label>
+            <input type="file" class="form-control form control-md" id="image" name="image"/>
+        </div>
+        <div class="mb-3">
             <button type="submit" class="btn btn-primary">Atualizar</button>
         </div>
     </form>

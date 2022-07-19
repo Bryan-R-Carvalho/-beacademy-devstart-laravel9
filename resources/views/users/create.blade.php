@@ -11,7 +11,7 @@
         </div>  
     @endif
     
-    <form action="{{route('users.store')}}" method="POST">
+    <form action="{{route('users.store')}}" method="POST" enctype="multipart/form-data">
         @method('POST')
         @csrf
         <div class="mb-3">
@@ -25,6 +25,10 @@
         <div class="mb-3">
             <label for="password">Senha</label>
             <input type="password" name="password" id="password" class="form-control" placeholder="Senha">
+        </div>
+        <div class="mb-3">
+            <label for="image" class="form-label">Imagem</label>
+            <input type="file" class="form-control form control-md" id="image" name="image"/>
         </div>
         <div class="mb-3">
             <button type="submit" class="btn btn-primary">Cadastrar</button>

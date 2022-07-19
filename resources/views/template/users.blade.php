@@ -9,7 +9,17 @@
 
 </head>
 <body>
-    <div class="container">
+    <div class="container w-50 p-3">
+        <nav class="navbar navbar-expand-xl navbar navbar-dark bg-dark">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item ">
+                        <a class="nav-item nav-link" href="/users">Usuarios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-item nav-link" href="/users/create">Novo usuario</a>
+                    </li>
+                </ul>
+        </nav>
     @yield('body')
     </div>
 </body>
