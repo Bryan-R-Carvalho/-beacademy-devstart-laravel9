@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreUpdateUserFormRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Team;
 
 class UserController extends Controller
 {
@@ -20,13 +21,19 @@ class UserController extends Controller
 
 
     public function show($id){
+        /*$team = Team::find($id);
+            $team->load('users');
+            return $team;
+        */
         $user = User::find($id);
 
         if($user){
+            
             return view('users.show', compact('user'));
         } else {
             echo('Usuário não encontrado');
         }
+        
     }
     
 
