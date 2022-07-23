@@ -2,7 +2,21 @@
 @section('title', 'Listagem de usuarios')
 @section('body')
     <h1>Listagem de usuarios</h1>
-    <a href="{{ route('users.create')}}" class="btn btn-outline-dark">Criar usuario</a>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-sm mt-2 mb-5">
+                <a href="{{ route('users.create')}}" class="btn btn-outline-dark">Criar usuario</a>
+            </div>
+            <div class="col-sm mt-2 mb-5">
+                <form action="{{ route('users.index')}}" method="GET">
+                    <div class="input-group">
+                        <input type="search" class="form-control rounded" name="search">
+                        <button type="submit" class="btn btn-outline-primary">Pesquisar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -30,6 +44,7 @@
                 <td>{{ date('d/m/Y', strtotime($user->created_at)) }}</td>
                 <td>
                     <a href="{{ route('users.show', $user->id) }}" class="btn btn-info">Detalhes</a>
+                </td>
                     
             </tr>
             @endforeach

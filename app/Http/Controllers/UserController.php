@@ -8,14 +8,15 @@ use App\Models\Team;
 
 class UserController extends Controller
 {
+    protected $model;
     public function __construct(User $user)
     {
         $this->model = $user;
     }
 
 
-    public function index(){
-        $users = User::paginate(10);
+    public function index(Request $request){
+        $users = $this->model->getUsers($request->search ?? '');
         return view('users.index', compact('users'));
     }
 
