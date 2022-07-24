@@ -9,21 +9,52 @@
 
 </head>
 <body>
-    <div class="container w-75 p-3">
-        <nav class="navbar navbar-expand-xl navbar navbar-dark bg-dark">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item ">
-                        <a class="nav-item nav-link" href="/users">Usuarios</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-item nav-link" href="/posts">Posts</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-item nav-link" href="/users/create">Novo usuario</a>
-                    </li>
-                </ul>
+    <div class="container w-75 p-3"> 
+        <nav class="navbar navbar-expand-sm justify-content-between navbar navbar-dark bg-dark">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item active">
+                                    <a class="nav-item nav-link text-white" href="/users">Usuarios</a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-item nav-link text-white" href="/posts">Posts</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-6">
+                            <ul class="navbar-nav mr-auto">
+                                @if(Auth::user())
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" href="#">{{Auth::user()->name}}</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <form action="{{ route('logout') }}" method="POST">
+                                            @csrf
+                                            <x-responsive-nav-link class="nav-link text-white" :href="route('logout')"
+                                                onclick="event.preventDefault();
+                                                this.closest('form').submit();" >
+                                                {{ __('Sair')}}
+                                            </x-responsive-nav-link>
+                                        </form>
+                                    </li>
+                                @else
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" href="{{ route('login')}}">Entrar</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" href="{{ route('register')}}">Cadastrar</a>
+                                    </li>
+                                @endif
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </nav>
-    @yield('body')
+        @yield('body')
     </div>
 </body>
 </html>

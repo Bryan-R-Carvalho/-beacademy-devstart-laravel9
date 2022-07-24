@@ -25,16 +25,18 @@ class StoreUpdateUserFormRequest extends FormRequest
     {   $id = $this->id ?? '';
         return [
             'name' => 'required|string|min:3|max:50',
-            'email' => ['required', 'email', 'unique:users,email,{$id},id',  ],
+            'email' => ['required', 'email', /*'unique:users,email,{$id},id', */],
             'password' => ['required', 'min:6', 'max:16'],
             'image' => ['file', 'mimes:jpeg,png,jpg,svg', 'max:1024'],
 
         ];
         if($this->method('PUT')){
+            
             $rules['password'] =[
                 'nullable',
                 'min:6',
                 'max:16'
+                
             ];
         }
         return $rules;
