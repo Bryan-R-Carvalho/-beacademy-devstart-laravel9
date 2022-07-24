@@ -16,12 +16,16 @@ Route::middleware('auth')->group(function(){
     Route::post('/users', [UserController::class, 'store'])->name('users.store');
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
     Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
+
+    Route::get('/posts', [PostController::class , 'index'])->name('posts.index');
+    Route::get('/users/{id}/posts', [PostController::class , 'show'])->name('posts.show');
 });
 
-
+Route::middleware('auth', 'admin')->group(function(){
+    Route::get('/admin', [UserController::class, 'admin'])->name('admin');
+});
     
-Route::get('/posts', [PostController::class , 'index'])->name('posts.index');
-Route::get('/users/{id}/posts', [PostController::class , 'show'])->name('posts.show');
+
 
 Route::get('/viacep', [ViaCepController::class, 'index'])->name('viacep.index');
 Route::post('/viacep', [ViaCepController::class, 'index'])->name('viacep.index.post');
