@@ -29,8 +29,10 @@
             <label for="image" class="form-label">Imagem</label>
             <input type="file" class="form-control form control-md" id="image" name="image"/>
         </div>
-        <div class="mb-3">
-            <button type="submit" class="btn btn-primary">Atualizar</button>
+        <div class="form-check mb-3">
+            <input type="checkbox" name="admin" id="admin" class="form-check-input" value="1">
+            <label for="admin" class="form-check-label">Administrador</label>
         </div>
+        <button type="submit" class="btn btn-primary">Atualizar</button>
     </form>
 @endsection

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Team;
 
+
 class UserController extends Controller
 {
     protected $model;
@@ -44,14 +45,9 @@ class UserController extends Controller
 
 
     public function store(StoreUpdateUserFormRequest $request){
-        /*$user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = bcrypt($request->password);
-        $user->save();*/
-
         $data = $request->all();
         $data['password'] = bcrypt($data['password']);
+
         if($request->image){
             $file = $request['image'];
             $path = $file->store('profile', 'public');
@@ -60,7 +56,7 @@ class UserController extends Controller
 
         $this->model->create($data);
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('create', 'Usuário criado com sucesso!');
     }
 
 
@@ -82,10 +78,12 @@ class UserController extends Controller
         if($request->password){
             $data['password'] = bcrypt($request->password);
         }
+        $data['is_admin'] = $request->is_admin ? 1 : 0;
 
         $user->update($data);
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('edit', 'Usuário criado com sucesso!');
+        //return redirect()->route('users.index');
     }
 
     public function destroy($id){
@@ -93,7 +91,8 @@ class UserController extends Controller
             return redirect()->route('users.index');
         }
         $user->delete();
-        return redirect()->route('users.index');
+        //return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('destroy', 'Usuário deletado com sucesso!');
     }
 
     public function admin(){

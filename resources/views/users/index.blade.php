@@ -2,7 +2,22 @@
 @section('title', 'Listagem de usuarios')
 @section('body')
     <h1>Listagem de usuarios</h1>
-    
+        @if(session()->has('create'))
+            <div class="alert alert-success">
+                <strong>Atenção! </strong>{{ session()->get('create') }}
+            </div>
+        @endif
+        @if(session()->has('edit'))
+            <div class="alert alert-warning">
+                <strong>Atenção! </strong>{{ session()->get('edit') }}
+            </div>
+        @endif
+        @if(session()->has('destroy'))
+            <div class="alert alert-danger">
+                <strong>Atenção! </strong>{{ session()->get('destroy') }}
+            </div>
+        @endif
+        
     <div class="container">
         <div class="row">
             <div class="col-sm mt-2 mb-5">
